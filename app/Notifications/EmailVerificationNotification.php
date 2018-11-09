@@ -37,18 +37,16 @@ class EmailVerificationNotification extends Notification
 
     /**
      * Get the mail representation of the notification.
-     * 发送邮件会调用此方法来构建邮件内容 参数就是App\
+     * 发送邮件会调用此方法来构建邮件内容 参数就是 App\Models\User 对象
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         $token = Str::random(16);
-
         //在缓存中写入字符串
         Cache::set('email_verification_'.$notifiable->email,$token,30);
         $url = route('email_verification.verify',['email'=>$notifiable->email,'token'=>$token]);
-
         return (new MailMessage)
                     ->greeting($notifiable->name.'您好')
                     ->subject('注册成功，请验证您的邮箱')

@@ -91,7 +91,8 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'zh_CN',
+    'faker_locale' => 'zh_CN',
 
     /*
     |--------------------------------------------------------------------------
