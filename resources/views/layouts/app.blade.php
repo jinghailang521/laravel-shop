@@ -27,6 +27,7 @@
 
 <!-- JS 脚本 -->
 <script src="{{ mix('js/app.js') }}"></script>
+@yield('scriptAfterJs')
 <!-- helpdesk 3 widget -->
 <script type="text/javascript">
     (function(w, d, s, u) {
