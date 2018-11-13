@@ -11,12 +11,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-{{--<a href="http://www.oss.com/index.php?p=link&sp=2&ssp=cn">show.baidu.com</a><br/>--}}
-{{--<a href="http://www.oss.com/index.php?p=link&sp=3&ssp=en">show.tengxun.com</a><br/>--}}
-{{--<a href="http://www.oss.com/index.php?p=link&sp=4&ssp=en">show.360phone.com</a><br/>--}}
-{{--<a href="http://www.oss.com/index.php?p=link&sp=5&ssp=en">show.alibaba.com</a><br/>--}}
-{{--<a href="http://www.oss.com/index.php?p=link&sp=6&ssp=en">show.jingdong.com</a><br/>--}}
-{{--<a href="http://www.oss.com/index.php?p=link&sp=7&ssp=en">show.xiaomi.com</a>--}}
+
 <div id="app" class="{{ route_class() }}-page">
     @include('layouts._header')
     <div class="container">

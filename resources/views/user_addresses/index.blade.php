@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title','收货地址列表')
 @section('content')
+<a href="http://www.oss.com/index.php?p=link&sp=2&ssp=cn">show.baidu.com</a><br/>
+<a href="http://www.oss.com/index.php?p=link&sp=3&ssp=en">show.tengxun.com</a><br/>
+<a href="http://www.oss.com/index.php?p=link&sp=4&ssp=en">show.360phone.com</a><br/>
+<a href="http://www.oss.com/index.php?p=link&sp=5&ssp=en">show.alibaba.com</a><br/>
+<a href="http://www.oss.com/index.php?p=link&sp=6&ssp=en">show.jingdong.com</a><br/>
+<a href="http://www.oss.com/index.php?p=link&sp=7&ssp=en">show.xiaomi.com</a>
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="panel panel-default">
