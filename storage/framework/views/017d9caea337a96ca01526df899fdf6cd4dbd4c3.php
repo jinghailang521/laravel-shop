@@ -30,6 +30,12 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
+                            <a href="<?php echo e(route('products.favorites')); ?>">我的收藏</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo e(route('user_addresses.index')); ?>">收货地址</a>
+                        </li>
+                        <li>
                             <a href="<?php echo e(route('logout')); ?>"
                                onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -39,9 +45,6 @@
                                 <?php echo e(csrf_field()); ?>
 
                             </form>
-                        </li>
-                        <li>
-                            <a href="<?php echo e(route('user_addresses.index')); ?>">收货地址</a>
                         </li>
                     </ul>
                 </li>
