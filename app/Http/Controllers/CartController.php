@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\CartItem;
+use App\Http\Requests\AddCartRequest;
+
+class CartController extends Controller
+{
+    //
+    public function add(AddCartRequest $request)
+    {
+        $user   = $request->user();
+        $skuId  = $request->input('sku_id');
+        $amount = $request->input('amount');
+
+        //商品是否已经在购物车内
+        if( $cart = $user->cartItems()->where('product_sku_id',$skuId)->first() ){
+            //存在则叠加商品数量
+            $cart->update([
+                'amount' => $cart->amount + $amount
+            ]);
+        }else{
+            //创建新购物车
+            $cart = new CartItem();
+            $cart->amount = $amount;
+            $cart->user()->associate($user);    //更新关联属性
+            $cart->productSku()->associate($skuId); //更新管理属性
+            $cart->save();
+        }
+        return [];
+    }
+}
