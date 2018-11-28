@@ -28,7 +28,42 @@
                                             </tr>
                                         </thead>
                                         @foreach( $order->items as $index=>$item )
-
+                                            <tr>
+                                                <td class="product-info">
+                                                    <div class="preview">
+                                                        <a target="_blank" href="{{ route('products.show',[$item->product_id]) }}">
+                                                            <img src="{{ $item->product->image_url }}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <span class="product-title">
+                                                            <a href="{{ route('products.show',[$item->product_id]) }}">{{ $item->product->title }}</a>
+                                                        </span>
+                                                        <span class="sku-title">{{ $item->productSku->title }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="sku-price text-center">￥{{ $item->price }}</td>
+                                                <td class="sku-amount text-center">{{ $item->amount }}</td>
+                                                @if( $index === 0 )
+                                                    <td rowspan="{{ count($order->items) }}" class="text-center total-amount">￥{{ $order->total_amount }}</td>
+                                                    <td rowspan="{{ count($order->items) }}" class="text-center">
+                                                    @if( $order->paid_at )
+                                                        @if( $order->refund_status === \App\Models\Order::REFUND_STATUS_PENDING )
+                                                            已支付
+                                                        @else
+                                                            {{ \App\Models\Order::$refundStatusMap[$order->refund_status] }}
+                                                        @endif
+                                                    @elseif( $order->closed )
+                                                        已关闭
+                                                    @else
+                                                        未支付<br>
+                                                        请于{{ $order->created_at->addSeconds(config('app.order_ttl'))->format('H:i') }}
+                                                        前完成支付<br>否则订单将自动关闭
+                                                    @endif
+                                                    </td>
+                                                    <td rowspan="{{ count($order->items) }}" class="text-center"><a class="btn btn-primary btn-xs" href="">查看订单</a></td>
+                                                @endif
+                                            </tr>
                                         @endforeach
                                     </table>
                                 </div>

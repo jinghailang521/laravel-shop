@@ -21,7 +21,7 @@ class OrdersController extends Controller
             ->where('user_id',$request->user()->id)
             ->orderBy('created_at','desc')
             ->paginate();
-        return view('orders.index',['order'=>$orders]);
+        return view('orders.index',['orders'=>$orders]);
     }
 
     public function store(OrderRequest $request)
